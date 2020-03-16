@@ -3,6 +3,7 @@ const MiniCSSExtractPlugin = require('mini-css-extract-plugin');
 const { join } = require('path');
 const { VueLoaderPlugin } = require('vue-loader');
 const { HotModuleReplacementPlugin } = require('webpack');
+const nodeExternals = require('webpack-node-externals');
 
 module.exports = {
     mode: "development",
@@ -55,5 +56,7 @@ module.exports = {
         new MiniCSSExtractPlugin({
             filename: './app.bundle.css'
         })
-    ]
+    ],
+    devtool: 'inline-cheap-module-source-map',
+    externals: [nodeExternals()]
 };
